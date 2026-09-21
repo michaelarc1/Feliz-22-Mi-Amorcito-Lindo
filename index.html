@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felices 22 Años María Elena • De Michael Antonio ✨</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            cursive: ['"Dancing Script"', 'cursive'],
+            elegant: ['"Cinzel"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+          colors: {
+            rose: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+            },
+            gold: {
+              300: '#fde047',
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+    @keyframes floatFast {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-8px) scale(1.05); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.5)); }
+      50% { filter: drop-shadow(0 0 30px rgba(244, 63, 94, 0.8)); }
+    }
+    @keyframes heartBeat {
+      0%, 20%, 40%, 100% { transform: scale(1); }
+      10%, 30% { transform: scale(1.15); }
+    }
+    @keyframes shimmerGold {
+      to { background-position: 200% center; }
+    }
+    .animate-float { animation: floatSlow 6s ease-in-out infinite; }
+    .animate-float-fast { animation: floatFast 4s ease-in-out infinite; }
+    .animate-glow { animation: pulseGlow 4s ease-in-out infinite; }
+    .animate-heartbeat { animation: heartBeat 2.5s ease-in-out infinite; }
+    
+    .gold-shimmer-text {
+      background: linear-gradient(90deg, #facc15 0%, #fffbeb 50%, #facc15 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      animation: shimmerGold 4s linear infinite;
+    }
+    .rose-shimmer-text {
+      background: linear-gradient(90deg, #fda4af 0%, #fff1f2 50%, #fda4af 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      animation: shimmerGold 5s linear infinite;
+    }
+    
+    .text-shadow-elegant { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); }
+    .text-shadow-glow { text-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
+    
+    .glass-panel {
+      background: rgba(42, 10, 24, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(250, 204, 21, 0.25);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    }
+    
+    .flower-card {
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .flower-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 25px 45px rgba(225, 29, 72, 0.3);
+      border-color: rgba(250, 204, 21, 0.6);
+      background: rgba(42, 10, 24, 0.85);
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1a0f14; }
+    ::-webkit-scrollbar-thumb { background: #881337; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #be123c; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#12080c] via-[#2a0e1b] to-[#0a0508] text-rose-50 min-h-screen font-sans relative overflow-x-hidden selection:bg-rose-500 selection:text-white">
+
+  <canvas id="magicCanvas" class="fixed inset-0 pointer-events-none z-10 w-full h-full"></canvas>
+
+  <div class="fixed top-4 right-4 z-40 flex items-center gap-3">
+    <div class="hidden sm:flex items-center gap-2 px-4 py-2 bg-rose-900/60 backdrop-blur-md rounded-full border border-rose-500/50 text-rose-100 text-xs font-medium shadow-lg">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+      22 de Septiembre
+    </div>
+    <button id="musicToggle" class="flex items-center gap-2 bg-gold-500/20 backdrop-blur-md hover:bg-gold-500/40 border border-gold-400/50 text-gold-100 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all shadow-[0_0_15px_rgba(250,204,21,0.3)] hover:scale-105 active:scale-95">
+      <span id="musicIcon">🎵</span>
+      <span id="musicText">Melodía de Cumpleaños</span>
+    </button>
+  </div>
+
+  <!-- Pantalla de Entrada -->
+  <div id="introEnvelope" class="fixed inset-0 z-50 bg-[#0a0508]/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center transition-all duration-1000">
+    <div class="max-w-md w-full bg-gradient-to-b from-rose-950/90 to-black/90 border-2 border-gold-400/50 rounded-3xl p-8 sm:p-10 shadow-[0_0_60px_rgba(225,29,72,0.4)] flex flex-col items-center relative overflow-hidden group">
+      
+      <div class="absolute -top-16 -left-16 w-40 h-40 bg-rose-600/40 rounded-full blur-3xl pointer-events-none transition-transform group-hover:scale-150 duration-700"></div>
+      <div class="absolute -bottom-16 -right-16 w-40 h-40 bg-gold-500/30 rounded-full blur-3xl pointer-events-none transition-transform group-hover:scale-150 duration-700"></div>
+
+      <div class="w-24 h-24 mb-6 relative flex items-center justify-center animate-heartbeat text-7xl drop-shadow-[0_0_15px_rgba(250,204,21,0.5)]">
+        🎁
+      </div>
+
+      <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-gold-300 font-bold mb-3">Un regalo muy especial</span>
+      
+      <h2 class="font-elegant text-3xl sm:text-4xl font-bold text-rose-100 mb-3 leading-tight">
+        Felices 22 Años,<br>
+        <span class="gold-shimmer-text text-4xl sm:text-5xl mt-2 inline-block drop-shadow-lg">María Elena</span>
+      </h2>
+      
+      <p class="font-cursive text-2xl text-rose-300/90 mb-5 text-shadow-glow">
+        Con todo el amor de Michael Antonio
+      </p>
+
+      <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent my-3"></div>
+
+      <p class="text-xs sm:text-sm text-rose-200/90 mb-8 font-light leading-relaxed">
+        "Hoy 22 de Septiembre celebramos tu vida. Tus 22 primaveras merecen el jardín más hermoso del mundo. Toca para descubrir tu sorpresa..."
+      </p>
+
+      <button onclick="openGiftIntro()" class="w-full py-4 px-6 bg-gradient-to-r from-rose-600 via-rose-500 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold rounded-full text-sm sm:text-base shadow-[0_0_25px_rgba(225,29,72,0.6)] transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-3 border border-rose-400/50">
+        <span class="text-xl">✨</span>
+        <span>Abrir mi Jardín de 22 Años</span>
+        <span class="text-xl">✨</span>
+      </button>
+    </div>
+  </div>
+
+  <main class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 py-12 flex flex-col items-center">
+
+    <div class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-rose-950/60 border border-gold-500/40 text-gold-200 text-xs sm:text-sm tracking-widest uppercase mb-8 backdrop-blur-md shadow-[0_0_15px_rgba(250,204,21,0.2)]">
+      <span>🎉</span>
+      <span class="font-bold">22 de Septiembre • 22 Primaveras</span>
+      <span>🎉</span>
+    </div>
+
+    <header class="text-center mb-16 space-y-5 max-w-4xl relative">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://images.unsplash.com/photo-1508611116262-e67c8cb312d4?w=800&auto=format&fit=crop')] bg-center bg-cover opacity-5 mix-blend-screen pointer-events-none rounded-full blur-2xl"></div>
+      
+      <h1 class="font-elegant text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gold-200 via-yellow-400 to-gold-200 text-shadow-elegant relative z-10 leading-tight pb-2">
+        ¡Feliz Cumpleaños,<br>Mi Amada María Elena!
+      </h1>
+      <p class="font-cursive text-3xl sm:text-5xl text-rose-300 font-normal mt-2 text-shadow-glow">
+        De tu novio: Michael Antonio
+      </p>
+      <div class="w-32 h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent mx-auto rounded-full my-6"></div>
+      <p class="text-sm sm:text-base md:text-lg text-rose-100 max-w-2xl mx-auto leading-relaxed font-light drop-shadow-md">
+        "Ayer celebramos con flores amarillas, pero hoy el mundo entero se viste de fiesta para celebrar el milagro de tu existencia. Felices 22 añitos a la reina de mi corazón."
+      </p>
+    </header>
+
+    <section class="w-full mb-20 relative">
+      <div class="absolute -inset-1 bg-gradient-to-r from-rose-600 via-gold-500 to-rose-600 rounded-[2.5rem] blur-lg opacity-30 animate-pulse"></div>
+      <div class="relative rounded-3xl overflow-hidden border border-rose-500/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] glass-panel group">
+        <div class="relative aspect-[4/5] sm:aspect-[21/9] w-full overflow-hidden">
+          <img 
+            src="watermarked_img_12863262428151500642.png" 
+            alt="Paisaje mágico de cumpleaños para María Elena" 
+            class="w-full h-full object-cover object-center transition-transform duration-[20s] group-hover:scale-110"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0508] via-[#0a0508]/70 to-transparent flex flex-col justify-end p-6 sm:p-12">
+            <span class="text-xs uppercase tracking-[0.2em] text-gold-400 font-bold mb-3 flex items-center gap-2 drop-shadow-lg">
+              <span class="text-lg">👑</span> La dueña de mi corazón
+            </span>
+            <h2 class="font-elegant text-3xl sm:text-5xl text-white font-bold mb-4 text-shadow-elegant">
+              22 Años Iluminando el Mundo
+            </h2>
+            <p class="text-xs sm:text-base text-rose-100 max-w-2xl leading-relaxed mb-6 font-light drop-shadow-md">
+              Cada día a tu lado es un regalo, pero hoy el regalo más grande es celebrar tu vida. He preparado un jardín entero solo para ti, con 8 flores que representan mis mejores deseos para este nuevo año de vida que comienzas.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-2">
+              <button onclick="openLetterModal()" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 via-yellow-500 to-gold-500 hover:from-gold-300 hover:to-yellow-400 text-[#2a0e1b] font-bold px-7 py-3.5 rounded-full text-xs sm:text-sm transition-all shadow-[0_0_20px_rgba(250,204,21,0.6)] hover:scale-105 active:scale-95">
+                <span class="text-lg">💌</span>
+                <span>Leer mi Carta de Cumpleaños</span>
+              </button>
+              <button onclick="triggerFestiveBurst(window.innerWidth/2, window.innerHeight/2)" class="inline-flex items-center gap-2 bg-rose-950/70 hover:bg-rose-900/90 border border-rose-400/60 text-rose-50 font-medium px-7 py-3.5 rounded-full text-xs sm:text-sm backdrop-blur-md transition-all hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(225,29,72,0.4)]">
+                <span class="text-lg">🎉</span>
+                <span>Lluvia de Confeti y Flores</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full mb-20">
+      <div class="text-center mb-12">
+        <span class="text-gold-400 font-bold tracking-widest uppercase text-xs sm:text-sm mb-2 block drop-shadow-md">Un ramo digital infinito</span>
+        <h3 class="font-elegant text-3xl sm:text-5xl font-bold text-rose-100 mb-4 text-shadow-elegant">
+          El Jardín de tus 22 Años
+        </h3>
+        <p class="text-sm sm:text-base text-rose-200/90 max-w-xl mx-auto font-light drop-shadow-sm">
+          Toca cada una de estas maravillosas flores. Cada una es un deseo, una promesa y un recordatorio de por qué Michael Antonio te ama tanto en tu cumpleaños.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full px-2">
+        
+        <!-- FLOR 1 -->
+        <div onclick="showFlowerMessage(1)" class="flower-card cursor-pointer group glass-panel rounded-3xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/10 rounded-bl-full blur-xl"></div>
+          <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 relative shadow-lg">
+            <img src="watermarked_img_7994141819128674895.png" alt="Girasol" class="w-full h-full object-cover filter transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2a0e1b] via-transparent to-transparent opacity-80"></div>
+          </div>
+          <span class="text-[10px] tracking-widest uppercase text-gold-400 mb-1 font-bold">1. Por Tu Luz</span>
+          <h4 class="font-serif text-lg font-bold text-rose-50 mb-2">Girasol Eterno</h4>
+          <span class="mt-auto text-xs text-rose-100 bg-rose-900/60 border border-rose-500/40 rounded-full px-4 py-1.5 font-medium group-hover:bg-rose-600 group-hover:text-white transition-colors w-full shadow-md">Descubrir deseo ✨</span>
+        </div>
+
+        <!-- FLOR 2 -->
+        <div onclick="showFlowerMessage(2)" class="flower-card cursor-pointer group glass-panel rounded-3xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 relative shadow-lg">
+            <img src="watermarked_img_13251606889708656398.png" alt="Rosas Rojas" class="w-full h-full object-cover filter transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2a0e1b] via-transparent to-transparent opacity-80"></div>
+          </div>
+          <span class="text-[10px] tracking-widest uppercase text-rose-400 mb-1 font-bold">2. Por Nuestro Amor</span>
+          <h4 class="font-serif text-lg font-bold text-rose-50 mb-2">Rosas de Pasión</h4>
+          <span class="mt-auto text-xs text-rose-100 bg-rose-900/60 border border-rose-500/40 rounded-full px-4 py-1.5 font-medium group-hover:bg-rose-600 group-hover:text-white transition-colors w-full shadow-md">Descubrir deseo ✨</span>
+        </div>
+
+        <!-- FLOR 3 -->
+        <div onclick="showFlowerMessage(3)" class="flower-card cursor-pointer group glass-panel rounded-3xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 relative shadow-lg">
+            <img src="watermarked_img_7979089072965578794.png" alt="Peonías" class="w-full h-full object-cover filter transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2a0e1b] via-transparent to-transparent opacity-80"></div>
+          </div>
+          <span class="text-[10px] tracking-widest uppercase text-pink-400 mb-1 font-bold">3. Por Tu Belleza</span>
+          <h4 class="font-serif text-lg font-bold text-rose-50 mb-2">Peonías Rosadas</h4>
+          <span class="mt-auto text-xs text-rose-100 bg-rose-900/60 border border-rose-500/40 rounded-full px-4 py-1.5 font-medium group-hover:bg-rose-600 group-hover:text-white transition-colors w-full shadow-md">Descubrir deseo ✨</span>
+        </div>
+
+        <!-- FLOR 4 -->
+        <div onclick="showFlowerMessage(4)" class="flower-card cursor-pointer group glass-panel rounded-3xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 relative shadow-lg">
+            <img src="watermarked_img_12458387208732597534.png" alt="Orquídeas" class="w-full h-full object-cover filter transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2a0e1b] via-transparent to-transparent opacity-80"></div>
+          </div>
+          <span class="text-[10px] tracking-widest uppercase text-purple-400 mb-1 font-bold">4. Por Tu Elegancia</span>
+          <h4 class="font-serif text-lg font-bold text-rose-50 mb-2">Orquídeas Blancas</h4>
+          <span class="mt-auto text-xs text-rose-100 bg-rose-900/60 border border-rose-500/40 rounded-full px-4 py-1.5 font-medium group-hover:bg-rose-600 group-hover:text-white transition-colors w-full shadow-md">Descubrir deseo ✨</span>
+        </div>
+
+        <!-- FLOR 5 -->
+        <div onclick="showFlowerMessage(5)" class="flower-card cursor-pointer group glass-panel rounded-3xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 relative shadow-lg">
+            <img src="watermarked_img_4845481220654397320.png" alt="Tulipanes" class="w-full h-full object-cover filter transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2a0e1b] via-transparent to-transparent opacity-80"></div>
+          </div>
+          <span class="text-[10px] tracking-widest uppercase text-orange-400 mb-1 font-bold">5. Por Tus Aventuras</span>
+          <h4 class="font-serif text-lg font-bold text-rose-50 mb-2">Tulipanes Soleados</h4>
+          <span class="mt-auto text-xs text-rose-100 bg-rose-900/60 border border-rose-500/40 rounded-full px-4 py-1.5 font-medium group-hover:bg-rose-600 group-hover:text-white transition-colors w-full shadow-md">Descubrir deseo ✨</span>
+        </div>
+
+        <!-- FLOR 6 -->
+        <div onclick="showFlowerMessage(6)" class="flower-card cursor-pointer group glass-panel rounded-3xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 relative shadow-lg">
+            <img src="watermarked_img_2722922539239330759.png" alt="Mix Flores" class="w-full h-full object-cover filter transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2a0e1b] via-transparent to-transparent opacity-80"></div>
+          </div>
+          <span class="text-[10px] tracking-widest uppercase text-teal-400 mb-1 font-bold">6. Por Tus Sueños</span>
+          <h4 class="font-serif text-lg font-bold text-rose-50 mb-2">Jardín de Colores</h4>
+          <span class="mt-auto text-xs text-rose-100 bg-rose-900/60 border border-rose-500/40 rounded-full px-4 py-1.5 font-medium group-hover:bg-rose-600 group-hover:text-white transition-colors w-full shadow-md">Descubrir deseo ✨</span>
+        </div>
+
+        <!-- FLOR 7 -->
+        <div onclick="showFlowerMessage(7)" class="flower-card cursor-pointer group glass-panel rounded-3xl p-5 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 relative shadow-lg">
+            <img src="watermarked_img_9302327914380896249.png" alt="Ramo Elegante" class="w-full h-full object-cover filter transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2a0e1b] via-transparent to-transparent opacity-80"></div>
+          </div>
+          <span class="text-[10px] tracking-widest uppercase text-rose-300 mb-1 font-bold">7. Por Tu Ternura</span>
+          <h4 class="font-serif text-lg font-bold text-rose-50 mb-2">Bouquet Silvestre</h4>
+          <span class="mt-auto text-xs text-rose-100 bg-rose-900/60 border border-rose-500/40 rounded-full px-4 py-1.5 font-medium group-hover:bg-rose-600 group-hover:text-white transition-colors w-full shadow-md">Descubrir deseo ✨</span>
+        </div>
+
+        <!-- FLOR 8 (Especial) -->
+        <div onclick="showFlowerMessage(8)" class="flower-card cursor-pointer group glass-panel rounded-3xl p-5 flex flex-col items-center text-center relative overflow-hidden border-2 border-gold-400/70 bg-gradient-to-b from-rose-950/60 to-[#2a0e1b]/90 shadow-[0_0_35px_rgba(250,204,21,0.3)]">
+          <div class="absolute top-2 right-2 text-2xl animate-bounce">👑</div>
+          <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 relative shadow-[0_0_25px_rgba(250,204,21,0.5)]">
+            <img src="watermarked_img_3899222128679799579.png" alt="El Ramo de 22" class="w-full h-full object-cover filter transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2a0e1b] via-transparent to-transparent opacity-70"></div>
+          </div>
+          <span class="text-[10px] tracking-widest uppercase text-gold-400 mb-1 font-black">8. El Regalo Final</span>
+          <h4 class="font-serif text-xl font-bold text-gold-200 mb-2">El Gran Ramo de 22</h4>
+          <span class="mt-auto text-xs text-[#2a0e1b] bg-gradient-to-r from-gold-400 to-yellow-500 rounded-full px-4 py-1.5 font-bold hover:brightness-110 transition-all w-full shadow-lg">Descubrir deseo ✨</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="w-full relative overflow-hidden rounded-[2.5rem] p-8 sm:p-14 mb-16 shadow-[0_0_50px_rgba(225,29,72,0.2)] glass-panel border-rose-400/40 text-center">
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-rose-600/30 blur-[100px] pointer-events-none"></div>
+      <div class="absolute -left-20 -top-20 w-80 h-80 bg-gold-500/20 blur-[100px] pointer-events-none"></div>
+      
+      <div class="max-w-3xl mx-auto relative z-10">
+        <div class="flex justify-center gap-3 mb-6 text-3xl sm:text-4xl drop-shadow-md">
+          <span>🎂</span><span>🥂</span><span>💖</span>
+        </div>
+        <h3 class="font-elegant text-3xl sm:text-4xl font-bold text-rose-50 mb-4 text-shadow-elegant">
+          "Para María Elena: Que tus 22 años sean tan mágicos como tú"
+        </h3>
+        <p class="text-sm sm:text-lg text-rose-100 leading-relaxed mb-10 font-light drop-shadow-md">
+          No hay regalo en este mundo que pueda igualar lo que tú me haces sentir cada día. Espero que este jardín digital, creado con cada latido de mi corazón, te haga sonreír en tu día especial.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button onclick="copyLoveMessage()" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold px-8 py-4 rounded-full text-sm transition-all active:scale-95 shadow-[0_0_25px_rgba(244,63,94,0.5)] border border-rose-400/40">
+            <span id="copyIcon" class="text-lg">📝</span>
+            <span id="copyText">Copiar Dedicatoria de Cumpleaños</span>
+          </button>
+          
+          <button onclick="sendLoveReply()" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#128C7E] hover:bg-[#25D366] text-white font-semibold px-8 py-4 rounded-full text-sm transition-all active:scale-95 shadow-[0_0_25px_rgba(37,211,102,0.4)] border border-green-400/50">
+            <span class="text-lg">💬</span>
+            <span>Agradecer a Michael en WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="text-center py-10 w-full text-rose-200 flex flex-col items-center gap-3 relative z-10">
+      <div class="w-20 h-px bg-gradient-to-r from-transparent via-rose-500/50 to-transparent mb-2"></div>
+      <p class="text-sm tracking-wide">
+        Diseñado y codificado con amor infinito por <span class="text-rose-100 font-bold">Michael Antonio Rodriguez Condega</span>
+      </p>
+      <p class="text-xs">
+        En exclusiva celebración de los 22 años de <span class="text-gold-300 font-bold">María Elena Hurtado Díaz</span>
+      </p>
+      <p class="font-cursive text-2xl text-rose-300 mt-2 text-shadow-glow">
+        "Mi vida, mi todo. Felices 22."
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Modal Flores -->
+  <div id="flowerModal" class="fixed inset-0 z-50 bg-[#0a0508]/95 backdrop-blur-xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-400">
+    <div class="glass-panel border-2 border-rose-400/50 rounded-[2rem] max-w-sm w-full p-6 sm:p-8 text-center relative transform scale-95 transition-all duration-400 shadow-[0_0_50px_rgba(225,29,72,0.5)] overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500/20 rounded-bl-full blur-2xl pointer-events-none"></div>
+      
+      <button onclick="closeFlowerModal()" class="absolute top-4 right-4 text-rose-200 hover:text-white w-8 h-8 rounded-full bg-rose-950/80 flex items-center justify-center border border-rose-400/50 transition-colors z-10 shadow-lg">
+        ✕
+      </button>
+      
+      <div id="modalImageContainer" class="w-full aspect-[4/3] rounded-2xl overflow-hidden mx-auto mb-5 shadow-2xl relative border border-rose-500/30">
+        <!-- JS Injects Image Here -->
+      </div>
+      
+      <span id="modalFlowerBadge" class="text-[10px] uppercase font-bold tracking-[0.2em] text-gold-400 bg-rose-950/70 px-4 py-1.5 rounded-full border border-gold-500/40 inline-block mb-4 shadow-md"></span>
+      <h3 id="modalFlowerTitle" class="font-elegant text-2xl font-bold text-rose-50 mb-3 text-shadow-elegant"></h3>
+      <p id="modalFlowerBody" class="text-sm text-rose-100 leading-relaxed font-light mb-8 drop-shadow-md"></p>
+      
+      <button onclick="closeFlowerModal(); triggerFestiveBurst(window.innerWidth/2, window.innerHeight/2);" class="w-full bg-gradient-to-r from-rose-600 to-pink-600 text-white font-bold py-3.5 rounded-full hover:brightness-110 transition-all text-sm shadow-[0_0_20px_rgba(244,63,94,0.6)] border border-rose-400/50">
+        Guardar en mi corazón 💖
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal Carta -->
+  <div id="letterModal" class="fixed inset-0 z-50 bg-[#0a0508]/95 backdrop-blur-xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500">
+    <div class="bg-[#fffdf7] text-[#4a1827] rounded-sm max-w-2xl w-full p-8 sm:p-12 relative transform scale-95 transition-transform duration-500 shadow-[0_0_60px_rgba(250,204,21,0.2)] overflow-y-auto max-h-[90vh] bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
+      
+      <div class="absolute inset-2 border-2 border-[#d4af37]/60 pointer-events-none"></div>
+      <div class="absolute inset-3 border border-[#d4af37]/30 pointer-events-none"></div>
+
+      <button onclick="closeLetterModal()" class="absolute top-6 right-6 text-rose-900/60 hover:text-rose-900 w-8 h-8 flex items-center justify-center font-bold text-xl transition-colors">
+        ✕
+      </button>
+      
+      <div class="text-center mb-8 relative z-10">
+        <span class="text-5xl block mb-3 drop-shadow-md">👑💖🌹</span>
+        <h3 class="font-elegant text-3xl sm:text-4xl font-bold text-[#5c1a30] mb-2 tracking-wide">Carta de Cumpleaños</h3>
+        <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto my-4"></div>
+        <p class="font-cursive text-3xl text-[#8a2b4a]">Para la dueña de mis 22 suspiros</p>
+      </div>
+
+      <div class="space-y-5 font-sans text-sm sm:text-base leading-relaxed text-[#3d1320] relative z-10 text-justify">
+        <p><strong class="text-lg font-serif">Mi hermosa María Elena,</strong></p>
+        <p>Si ayer las flores amarillas te decían que mi amor es incondicional, hoy, 22 de Septiembre, todas las flores del mundo se quedan cortas para celebrar la inmensa suerte que tengo de que existas. <strong class="text-[#8a2b4a]">¡Felices 22 añitos, mi vida!</strong></p>
+        <p>Llegar a los 22 años significa que llevas 22 primaveras llenando de luz este mundo. Admiro profundamente a la mujer en la que te has convertido: fuerte, dulce, inteligente y con un corazón de oro. Cada día a tu lado me doy cuenta de que no hay lugar en el que prefiera estar que no sea sosteniendo tu mano.</p>
+        <p>Quise crearte este jardín especial porque te mereces cosas únicas. Que este nuevo año de vida te traiga bendiciones infinitas, que todos tus sueños se cumplan y que me permitas seguir a tu lado para aplaudir todos tus logros.</p>
+        <p>Nunca olvides lo valiosa y perfecta que eres para mí. Que hoy te sientas como la reina absoluta del universo.</p>
+        
+        <div class="pt-8 mt-8 border-t border-[#d4af37]/50 text-right">
+          <p class="font-serif italic text-base text-[#5c1a30] mb-2">
+            Te amo más que a mi propia vida,
+          </p>
+          <p class="font-cursive text-4xl text-[#8a2b4a] font-bold">
+            Michael Antonio
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 relative z-10">
+        <button onclick="triggerFestiveBurst(window.innerWidth/2, window.innerHeight/2); closeLetterModal();" class="flex-1 bg-gradient-to-r from-[#8a2b4a] to-[#5c1a30] hover:from-[#70213b] hover:to-[#451223] text-white font-bold py-4 rounded-sm shadow-xl transition-all active:scale-95 text-center tracking-widest text-xs uppercase border border-[#d4af37]/40">
+          Guardar Carta en mi Corazón
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-rose-950/90 border border-gold-400/60 text-rose-50 font-bold px-7 py-4 rounded-full shadow-[0_15px_50px_rgba(225,29,72,0.6)] text-sm transform translate-y-32 opacity-0 transition-all duration-500 flex items-center gap-3 backdrop-blur-md whitespace-nowrap">
+    <span class="text-xl">✨</span>
+    <span id="toastMsg">Mensaje copiado con éxito</span>
+  </div>
+
+  <script>
+    // Se ha actualizado el JSON de imágenes generadas localmente
+    const flowerDetails = {
+      1: {
+        badge: "Deseo 1: Luz Infinita",
+        title: "El Girasol de la Alegría",
+        desc: "María Elena, este girasol representa tu energía contagiosa y tu hermosa sonrisa. Que en tus 22 años nunca dejes de brillar como el sol de Michael Antonio.",
+        img: "watermarked_img_7994141819128674895.png"
+      },
+      2: {
+        badge: "Deseo 2: Amor Apasionado",
+        title: "Rosas de Nuestro Amor",
+        desc: "El rojo intenso simboliza la profundidad de mis sentimientos por ti. 22 años de vida, y mi mayor deseo es amarte cada día con más fuerza.",
+        img: "watermarked_img_13251606889708656398.png"
+      },
+      3: {
+        badge: "Deseo 3: Belleza Única",
+        title: "Peonías para mi Princesa",
+        desc: "Las peonías son tan únicas y preciosas como tú. Este año, quiero recordarte a diario que eres la mujer más hermosa del universo.",
+        img: "watermarked_img_7979089072965578794.png"
+      },
+      4: {
+        badge: "Deseo 4: Fortaleza y Elegancia",
+        title: "Orquídeas de Admiración",
+        desc: "Admiro la increíble mujer en la que te conviertes. Fuerte, elegante, decidida. Estoy tan orgulloso de ti, mi hermosa cumpleañera.",
+        img: "watermarked_img_12458387208732597534.png"
+      },
+      5: {
+        badge: "Deseo 5: Aventuras Inolvidables",
+        title: "Tulipanes de Complicidad",
+        desc: "Por todos los viajes, risas y locuras que viviremos este año. Eres mi cómplice perfecta y mi lugar seguro.",
+        img: "watermarked_img_4845481220654397320.png"
+      },
+      6: {
+        badge: "Deseo 6: Sueños Cumplidos",
+        title: "Un Jardín de Esperanzas",
+        desc: "Cada color es un sueño que lograrás a tus 22. Yo estaré aquí, en primera fila, aplaudiendo cada uno de tus éxitos.",
+        img: "watermarked_img_2722922539239330759.png"
+      },
+      7: {
+        badge: "Deseo 7: Ternura y Paz",
+        title: "Bouquet Silvestre",
+        desc: "Me traes la paz más hermosa. Prometo cuidar tu corazón, entenderte y abrazarte en los días buenos y en los no tan buenos.",
+        img: "watermarked_img_9302327914380896249.png"
+      },
+      8: {
+        badge: "Deseo 8: Mi Vida Contigo",
+        title: "El Gran Ramo de 22",
+        desc: "22 años de María Elena, y toda una vida para amarla. Este mega ramo tiene todas las flores juntas, porque lo quiero todo contigo. ¡Feliz cumpleaños, mi amor!",
+        img: "watermarked_img_3899222128679799579.png"
+      }
+    };
+
+    function openGiftIntro() {
+      const intro = document.getElementById('introEnvelope');
+      intro.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => { intro.style.display = 'none'; }, 1000);
+      triggerFestiveBurst(window.innerWidth / 2, window.innerHeight / 2, 80);
+      startMusic();
+    }
+
+    const flowerModal = document.getElementById('flowerModal');
+    const modalImageContainer = document.getElementById('modalImageContainer');
+    
+    function showFlowerMessage(id) {
+      const data = flowerDetails[id];
+      if (!data) return;
+
+      modalImageContainer.innerHTML = `
+        <img src="${data.img}" alt="${data.title}" class="w-full h-full object-cover animate-float-fast" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0508] via-[#0a0508]/40 to-transparent opacity-90"></div>
+      `;
+      document.getElementById('modalFlowerBadge').textContent = data.badge;
+      document.getElementById('modalFlowerTitle').textContent = data.title;
+      document.getElementById('modalFlowerBody').textContent = data.desc;
+
+      flowerModal.classList.remove('opacity-0', 'pointer-events-none');
+      flowerModal.firstElementChild.classList.remove('scale-95');
+      flowerModal.firstElementChild.classList.add('scale-100');
+      playChimeNote();
+    }
+
+    function closeFlowerModal() {
+      flowerModal.classList.add('opacity-0', 'pointer-events-none');
+      flowerModal.firstElementChild.classList.add('scale-95');
+      flowerModal.firstElementChild.classList.remove('scale-100');
+    }
+
+    flowerModal.addEventListener('click', (e) => {
+      if (e.target === flowerModal) closeFlowerModal();
+    });
+
+    const letterModal = document.getElementById('letterModal');
+
+    function openLetterModal() {
+      letterModal.classList.remove('opacity-0', 'pointer-events-none');
+      letterModal.firstElementChild.classList.remove('scale-95');
+      letterModal.firstElementChild.classList.add('scale-100');
+      playChimeNote();
+    }
+
+    function closeLetterModal() {
+      letterModal.classList.add('opacity-0', 'pointer-events-none');
+      letterModal.firstElementChild.classList.add('scale-95');
+      letterModal.firstElementChild.classList.remove('scale-100');
+    }
+
+    letterModal.addEventListener('click', (e) => {
+      if (e.target === letterModal) closeLetterModal();
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-32');
+      setTimeout(() => { toast.classList.add('opacity-0', 'translate-y-32'); }, 4000);
+    }
+
+    function copyLoveMessage() {
+      const message = "🎉 Para la cumpleañera más hermosa, María Elena Hurtado Díaz:\nFelices 22 primaveras, mi amor. Hoy 22 de Septiembre celebro tu vida, tu belleza y la inmensa suerte de tenerte conmigo. Eres mi mayor regalo. ¡Te amo con todo mi corazón!\n\nCon amor eterno,\nMichael Antonio 💖🥂";
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(message).then(() => {
+          showToast("¡Felicitación de cumpleaños copiada! ✨");
+        }).catch(() => fallbackCopy(message));
+      } else {
+        fallbackCopy(message);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      try {
+        document.execCommand('copy');
+        showToast("¡Felicitación copiada! ✨");
+      } catch (err) {
+        showToast("No se pudo copiar, inténtalo manual");
+      }
+      document.body.removeChild(el);
+    }
+
+    function sendLoveReply() {
+      const replyText = encodeURIComponent("¡Mi amor Michael Antonio! Acabo de ver el hermoso jardín por mis 22 años y me puse a llorar de emoción. 😭💖 Gracias por hacer mi cumpleaños tan especial y por la bella carta. ¡Te amo muchísimo mi vida! 🎉✨");
+      window.open(`https://api.whatsapp.com/send?text=${replyText}`, '_blank');
+    }
+
+    const canvas = document.getElementById('magicCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor(x, y, isBurst = false) {
+        this.x = x !== undefined ? x : Math.random() * width;
+        this.y = y !== undefined ? y : Math.random() * -height - 100;
+        
+        this.type = Math.random() > 0.3 ? 'petal' : 'confetti';
+        
+        if(this.type === 'petal') {
+          this.size = Math.random() * 12 + 10;
+          const colors = ['#f43f5e', '#fb7185', '#fda4af', '#facc15', '#fde047'];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+        } else {
+          this.size = Math.random() * 6 + 3;
+          const colors = ['#ffffff', '#facc15', '#fbbf24', '#fecdd3'];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        this.speedY = isBurst ? (Math.random() - 0.5) * 12 + (this.type==='confetti'?-2:0) : Math.random() * 2 + 1;
+        this.speedX = isBurst ? (Math.random() - 0.5) * 12 : Math.random() * 1.5 - 0.75;
+        this.angle = Math.random() * 360;
+        this.angleSpeed = (Math.random() - 0.5) * 4;
+        this.opacity = Math.random() * 0.5 + 0.4;
+        
+        this.isBurst = isBurst;
+        this.life = isBurst ? (Math.random() * 60 + 60) : Infinity;
+        this.gravity = isBurst ? 0.15 : 0;
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.angle * 0.03) * 0.5;
+        this.angle += this.angleSpeed;
+
+        if (this.isBurst) {
+          this.speedY += this.gravity;
+          this.life--;
+          this.opacity = Math.max(0, this.life / 100);
+        } else {
+          if (this.y > height + 20) {
+            this.y = -20;
+            this.x = Math.random() * width;
+          }
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.angle * Math.PI) / 180);
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        
+        if (this.type === 'petal') {
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.bezierCurveTo(-this.size / 2, -this.size / 2, -this.size / 2, -this.size, 0, -this.size * 1.2);
+          ctx.bezierCurveTo(this.size / 2, -this.size, this.size / 2, -this.size / 2, 0, 0);
+          ctx.fill();
+        } else {
+          ctx.fillRect(-this.size/2, -this.size/4, this.size, this.size/2);
+        }
+        ctx.restore();
+      }
+    }
+
+    const particles = [];
+    const MAX_PARTICLES = 40;
+
+    for (let i = 0; i < MAX_PARTICLES; i++) {
+      particles.push(new Particle());
+    }
+
+    function triggerFestiveBurst(x, y, amount = 40) {
+      for (let i = 0; i < amount; i++) {
+        particles.push(new Particle(x, y, true));
+      }
+      playChimeNote();
+    }
+
+    window.addEventListener('click', (e) => {
+      if (!e.target.closest('button') && !e.target.closest('.glass-panel') && !e.target.closest('#introEnvelope')) {
+        triggerFestiveBurst(e.clientX, e.clientY, 15);
+      }
+    });
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.update();
+        p.draw();
+        if (p.isBurst && p.life <= 0) particles.splice(i, 1);
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyInterval = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+
+    function playTone(freq, type = 'sine', duration = 1.5) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      gain.gain.setValueAtTime(0, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    }
+
+    const romanticNotes = [392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00];
+
+    function playChimeNote() {
+      const note = romanticNotes[Math.floor(Math.random() * romanticNotes.length)];
+      playTone(note, 'triangle', 2.0);
+    }
+
+    const melodyPattern = [
+      { note: 523.25, time: 0 },    
+      { note: 659.25, time: 300 },  
+      { note: 783.99, time: 600 },  
+      { note: 1046.50, time: 900 }, 
+      { note: 783.99, time: 1200 }, 
+      { note: 659.25, time: 1500 }, 
+      { note: 587.33, time: 1800 }, 
+      { note: 523.25, time: 2400 }, 
+      { note: 659.25, time: 2700 }, 
+      { note: 880.00, time: 3000 }, 
+      { note: 783.99, time: 3600 }  
+    ];
+
+    function startMusic() {
+      isPlaying = true;
+      const icon = document.getElementById('musicIcon');
+      const text = document.getElementById('musicText');
+      if (icon) icon.textContent = '⏸️';
+      if (text) text.textContent = 'Pausar Melodía';
+
+      let step = 0;
+      melodyInterval = setInterval(() => {
+        const item = melodyPattern[step];
+        playTone(item.note, 'triangle', 2.5);
+        if(Math.random() > 0.6) playTone(item.note * 1.5, 'sine', 2.0);
+        step = (step + 1) % melodyPattern.length;
+      }, 500);
+    }
+
+    function stopMusic() {
+      isPlaying = false;
+      const icon = document.getElementById('musicIcon');
+      const text = document.getElementById('musicText');
+      if (icon) icon.textContent = '🎵';
+      if (text) text.textContent = 'Melodía de Cumpleaños';
+      if (melodyInterval) {
+        clearInterval(melodyInterval);
+        melodyInterval = null;
+      }
+    }
+
+    document.getElementById('musicToggle').addEventListener('click', () => {
+      if (isPlaying) stopMusic();
+      else startMusic();
+    });
+
+  </script>
+</body>
+</html>
